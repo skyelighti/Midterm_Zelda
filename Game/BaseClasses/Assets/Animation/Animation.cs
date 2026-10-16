@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameBase.Assets;
+namespace GameBase.Animation;
 
 public class Animation
 {
