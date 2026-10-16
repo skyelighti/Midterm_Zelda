@@ -1,0 +1,24 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:DesktopGL
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+
+#---------------------------------- Content ---------------------------------#
+
+#begin LoadInfo/DialogueList.xml
+/copy:LoadInfo/DialogueList.xml
+
+#begin LoadInfo/ItemDefinitions.xml
+/copy:LoadInfo/ItemDefinitions.xml
+
+#begin LoadInfo/NPCDefinitions.xml
+/copy:LoadInfo/NPCDefinitions.xml
+
