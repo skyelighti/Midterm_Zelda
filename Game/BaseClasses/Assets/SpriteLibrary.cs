@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameBase;
+using GameBase.Animations;
 
 namespace GameBase.Assets;
 public class SpriteLibrary
