@@ -9,5 +9,5 @@ will probably be updating pretty frequently as i figure things out
 -  anim state machine? 
 -  particle system/sprite effects
 -  shaders!!
--  tilemap .tmx handling so i dont need to modify 
+-  learn the Gum editor interface and then connect it to Monogame, instead of creating everything through code.   
 -  attempt to integrate some stuff from monogame extended
