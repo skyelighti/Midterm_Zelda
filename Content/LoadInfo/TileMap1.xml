@@ -4,7 +4,7 @@
         <name>DesertRuins</name>
         <tileWidth>16</tileWidth>
 		<tileHeight>16</tileHeight>
-        <sprite> Sprites/desert-ruins</sprite>
+        <sprite>Sprites/desert-ruins</sprite>
     </Tileset>
 
     <Tiles>

@@ -82,10 +82,10 @@ public class Tilemap
     /// <param name="row">The row of the tile in this tilemap.</param>
     /// <param name="tilesetName">The name of the tileset containing the tile.</param>
     /// <param name="tilesetID">The tileset id of the tile from the tileset to use.</param>
-    public void SetTile(int column, int row, string tilesetName, int tilesetID)
+    public void SetTile(int column, int row, string tileset, int tilesetID)
     {
         int index = row * Columns + column;
-        SetTile(index, new TileReference { TilesetName = tilesetName, TileID = tilesetID });
+        SetTile(index, new TileReference(tileset, tilesetID));
     }
 
     /// <summary>
