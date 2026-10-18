@@ -51,52 +51,55 @@ public partial class InputManager
         var startmap = inputActionMap;
         foreach (var binding in ActionMap[startmap])
         {
-            bool wasPressed = false;
-            bool isPressed = false;
-            foreach (var key in binding.Value)
-            {
-                if (Keyboard.PreviousState.IsKeyDown(key))
-                {
-                    wasPressed = true;
+            bool justPressed = false;
+            bool justReleased = false;
+            bool isDown = false;
+            foreach ( InputBinding b in binding.Value) {
+                if (b.WasJustPressed(Keyboard, Mouse)) {
+                    justPressed = true;
                 }
-                if (Keyboard.CurrentState.IsKeyDown(key))
+                else if (b.WasJustReleased(Keyboard, Mouse))
                 {
-                    isPressed = true;
+                    justReleased = true;
+                }
+                if (b.IsDown(Keyboard,Mouse))
+                {
+                    isDown = true;
+                }
+                if (justPressed) {
+                    ActionPressed?.Invoke(binding.Key);
+                    if (inputActionMap != startmap) {
+                        return;
+                    }
+                }
+                if (justReleased && !isDown)
+                {
+                    ActionReleased?.Invoke(binding.Key);
+                    if (inputActionMap != startmap)
+                    {
+                        return;
+                    }
+                }
+                if (isDown)
+                {
+                    ActionKeyDown?.Invoke(binding.Key);
+                    if (inputActionMap != startmap)
+                    {
+                        return;
+                    }
                 }
             }
-            if (isPressed && !wasPressed)
-            {
-                ActionPressed?.Invoke(binding.Key);
-                if (inputActionMap != startmap)
-                {
-                    return;
-                }
-            }
-            else if (!isPressed && wasPressed)
-            {
-                ActionReleased?.Invoke(binding.Key);
-                if (inputActionMap != startmap)
-                {
-                    return;
-                }
-            }
-            if (isPressed)
-            {
-                ActionKeyDown?.Invoke(binding.Key);
-                if (inputActionMap != startmap)
-                {
-                    return;
-                }
-            }
+
+
         }
         //prevents double firing for input :P
     }
 
-    public void UpdateKeyBindings(InputActionMap map, GameAction action, List<Keys> newKeys)
+    public void UpdateKeyBindings(InputActionMap map, GameAction action, List<InputBinding> newBindings)
     {
         if (ActionMap[map].ContainsKey(action))
         {
-            ActionMap[map][action] = new List<Keys>(newKeys);
+            ActionMap[map][action] = new List<InputBinding>(newBindings);
         }
     }
 
