@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace GameBase.Animation;
+namespace GameBase.Animations;
 
 public class AnimatedSprite : Sprite
 {

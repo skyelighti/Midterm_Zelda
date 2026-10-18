@@ -62,9 +62,9 @@ public abstract class Scene
         if (!sceneObjects.Contains(obj))
         {
             sceneObjects.Add(obj);
-            if (obj is ICollidable)
+            if (obj.GetComponent<ICollidable>() != null)
             {
-                AddCollider(obj as ICollidable);
+                AddCollider(obj.GetComponent<ICollidable>());
             }
         }
     }
@@ -112,9 +112,9 @@ public abstract class Scene
         foreach (GameObject g in toRemove)
         {
             sceneObjects.Remove(g);
-            if (g is ICollidable)
+            if (g.GetComponent<ICollidable>() != null)
             {
-                RemoveCollider(g as ICollidable);
+                RemoveCollider(g.GetComponent<ICollidable>());
             }
         }
         toRemove.Clear();

@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameBase.Assets;
-
+using System.Diagnostics;
 namespace GameBase;
 
 public class GameObject
 {
-
-    public Transform transform { get; } = new Transform(Vector2.Zero, 0, new Vector2(64, 64));
+    public Transform transform { get; }
 
     public bool IsActive { get; private set; } = true;
     //readonly mainly for pooling
@@ -23,7 +22,8 @@ public class GameObject
 
     public Scene ownerScene { get; protected set; }
     public bool ActiveOnSceneEnter = true;
-    public Layer layer { get; protected set; } = Layer.Default;
+    public Layer layer { get; protected set; } = Layer.Default; 
+    private readonly List<IComponent> components = new();
 
 
     public bool spriteVisible = true;
@@ -33,6 +33,11 @@ public class GameObject
         this.name = name;
         sprite = Services.Sprites.CreateSprite(spriteName);
         ownerScene = owner;
+
+        var trans = new TransformComponent(Vector2.Zero, 0, new Vector2(64, 64), this);
+        transform = trans.transform;
+        components.Add(trans);
+
     }
 
 
@@ -40,6 +45,13 @@ public class GameObject
     {
         //whereever handles updates should check if each gameobject is active before updating them
         //collision handler
+        foreach (IComponent component in components)
+        {
+            if (component.IsActive)
+            {
+                component.Update(gameTime);
+            }
+        }
 
         if (!spriteVisible)
         {
@@ -109,5 +121,27 @@ public class GameObject
     {
         invisibilityTimer = seconds;
         spriteVisible = false;
+    }
+    public void AddComponent(IComponent c)
+    {
+        if (c.owner == this && !components.Contains(c))
+        {
+            components.Add(c);
+        }
+        else {
+            Debug.WriteLine("component owner is not correct, or already added.");
+        }
+    }
+    public T GetComponent<T>() where T : class
+    {
+        foreach (IComponent component in components)
+        {
+            if (component is T match)
+            {
+                return match;
+            }
+        }
+
+        return null;
     }
 }

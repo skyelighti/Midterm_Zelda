@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace GameBase.Animations;
 
-internal class SpriteSheetAnimationFrame
+public class SpriteSheetAnimationFrame
 {
 }
