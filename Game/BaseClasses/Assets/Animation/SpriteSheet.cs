@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace  GameBase.Animation;
+namespace  GameBase.Animations;
 
 public class SpriteSheet
 {
