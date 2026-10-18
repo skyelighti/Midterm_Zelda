@@ -13,7 +13,6 @@ namespace GameBase.Tiles;
 public class Tilemap
 {
     private readonly Dictionary<string, Tileset> _tileset = new();
-    public const int EmptyTile = -1;
     private readonly TileReference[] _tiles;
 
     /// <summary>

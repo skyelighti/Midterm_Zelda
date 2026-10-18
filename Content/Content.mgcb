@@ -22,3 +22,6 @@
 #begin LoadInfo/NPCDefinitions.xml
 /copy:LoadInfo/NPCDefinitions.xml
 
+#begin LoadInfo/TileMap1.xml
+/copy:LoadInfo/TileMap1.xml
+
