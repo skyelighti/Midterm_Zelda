@@ -87,7 +87,6 @@ public static class LevelLoader
                 return lData;
             }
         }
-        return null;
     }
     public static TileReference GetTile(int globalID, Dictionary<int, Tileset> tileSetsByID)
     {

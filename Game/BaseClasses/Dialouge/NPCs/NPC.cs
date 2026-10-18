@@ -37,7 +37,7 @@ public class NPC : GameObject, ICollidable, IInteractable
 
         foreach (string id in info.dialogueIDOrder)
         {
-            dialogueInfoList.Add(Services.GameInfo.dialogueById[id]);
+            dialogueInfoList.Add(Services.GameDef.dialogueById[id]);
         }
 
     }
@@ -67,7 +67,7 @@ public class NPC : GameObject, ICollidable, IInteractable
         {
             EventSystem.NPCInteract(character);
             EventSystem.Interact(ID);
-            int index = Services.GameInfo.GetDialogueIndex(character);
+            int index = Services.GamePersistence.GetDialogueIndex(character);
             if (index < dialogueInfoList.Count)
             {
                 Services.Dialogue.DialogueSetup(dialogueInfoList[index]);

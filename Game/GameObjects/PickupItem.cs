@@ -19,7 +19,7 @@ public class PickupItem : Item
     {
         if (CanInteract)
         {
-            Services.GameInfo.playerInventory.AddItem(Info);
+            Services.PlayerInventory.AddItem(Info);
             CanInteract = false;
             ActiveOnSceneEnter = false;
             SetActive(false);
