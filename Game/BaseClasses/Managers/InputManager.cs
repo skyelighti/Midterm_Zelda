@@ -66,27 +66,30 @@ public partial class InputManager
                 {
                     isDown = true;
                 }
-                if (justPressed) {
-                    ActionPressed?.Invoke(binding.Key);
-                    if (inputActionMap != startmap) {
-                        return;
-                    }
-                }
-                if (justReleased && !isDown)
+                
+            }
+            if (justPressed)
+            {
+                ActionPressed?.Invoke(binding.Key);
+                if (inputActionMap != startmap)
                 {
-                    ActionReleased?.Invoke(binding.Key);
-                    if (inputActionMap != startmap)
-                    {
-                        return;
-                    }
+                    return;
                 }
-                if (isDown)
+            }
+            if (justReleased && !isDown)
+            {
+                ActionReleased?.Invoke(binding.Key);
+                if (inputActionMap != startmap)
                 {
-                    ActionKeyDown?.Invoke(binding.Key);
-                    if (inputActionMap != startmap)
-                    {
-                        return;
-                    }
+                    return;
+                }
+            }
+            if (isDown)
+            {
+                ActionKeyDown?.Invoke(binding.Key);
+                if (inputActionMap != startmap)
+                {
+                    return;
                 }
             }
 
