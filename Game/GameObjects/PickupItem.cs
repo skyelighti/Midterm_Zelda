@@ -10,8 +10,7 @@ namespace GameBase;
 
 public class PickupItem : Item
 {
-    public PickupItem(ContentManager content, ItemInfo info, string instanceId, Scene owner)
-        : base(content, info.spriteName, info.name, owner)
+    public PickupItem(ItemInfo info, string instanceId, Scene owner) : base(info.spriteName, owner, info.name)
     { 
         Info = info;
         ID = instanceId;
