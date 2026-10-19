@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace GameBase;
 
 /// <summary>
-/// Loads all outside content
+/// Loads all outside content. I have this settup currently as a partial class, so i can keep things that will probably be constant throughout every project that uses this template
+/// This will hold a default texture, default spritesheet
 /// </summary>
 public partial class ContentLoader
 {

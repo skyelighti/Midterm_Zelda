@@ -144,4 +144,17 @@ public class GameObject
 
         return null;
     }
+    public List<T> GetComponents<T>() where T : class
+    {
+        List<T> c = new();
+        foreach (IComponent component in components)
+        {
+            if (component is T match)
+            {
+                c.Add(match);
+            }
+        }
+
+        return c;
+    }
 }

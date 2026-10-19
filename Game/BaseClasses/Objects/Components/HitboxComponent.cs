@@ -45,7 +45,11 @@ public class HitboxComponent : Component, ICollidable
         var hb = new Hitbox(transformComponent.transform, o);
         hitbox = hb;
     }
-
+    public HitboxComponent(GameObject o): base(o)
+    {
+        owner = o;
+        var hb = new Hitbox(o);
+    }
 
     public void OnCollision(ICollidable other)
     {

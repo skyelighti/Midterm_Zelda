@@ -36,7 +36,11 @@ public class Hitbox : ICollidable
         }
        
     }
-
+    public Hitbox(GameObject o) {
+        owner = o;
+        layer = o.layer;
+        transform = o.transform;
+    }
     public void OnCollision(ICollidable other)
     {
         CollisionStay?.Invoke(other);

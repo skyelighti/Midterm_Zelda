@@ -10,16 +10,13 @@ using System.Xml.Linq;
 
 namespace GameBase.Dialogue;
 
-public class NPC : GameObject, IInteractable
+public class NPC : GameObject
 {
-    //other interfaces like iinteractable can also be implemented here
-
-    public bool CanInteract { get; protected set; } = true;
-    public string ID => name;
 
     public Character character = Character.NPC1;
     readonly List<DialogueInfo> dialogueInfoList;
     public HitboxComponent hitbox;
+    public InteractableComponent interact;
 
 
     public NPC(string spriteName, Scene owner, NPCInfo info, string name = null) : base(spriteName, owner, name)
@@ -36,11 +33,28 @@ public class NPC : GameObject, IInteractable
         hb.CollisionEnter += OnCollisionEnter;
         hb.CollisionExit += OnCollisionExit;
 
+        var i = new InteractableComponent(this);
+        interact = i;
+        AddComponent(interact);
+        interact.Interacted += OnInteract;
+
         foreach (string id in info.dialogueIDOrder)
         {
             dialogueInfoList.Add(Services.GameDef.dialogueById[id]);
         }
 
+    }
+    public void OnInteract(GameObject obj) {
+        if (interact.CanInteract)
+        {
+            EventSystem.NPCInteract(character);
+            EventSystem.Interact(interact.ID);
+            int index = Services.GamePersistence.GetDialogueIndex(character);
+            if (index < dialogueInfoList.Count)
+            {
+                Services.Dialogue.DialogueSetup(dialogueInfoList[index]);
+            }
+        }
     }
 
     public void OnCollision(ICollidable col)
@@ -51,20 +65,6 @@ public class NPC : GameObject, IInteractable
     }
     public void OnCollisionExit(ICollidable col)
     {
-    }
-
-    public void Interact(GameObject player)
-    {
-        if (CanInteract)
-        {
-            EventSystem.NPCInteract(character);
-            EventSystem.Interact(ID);
-            int index = Services.GamePersistence.GetDialogueIndex(character);
-            if (index < dialogueInfoList.Count)
-            {
-                Services.Dialogue.DialogueSetup(dialogueInfoList[index]);
-            }
-        }
     }
 
 }

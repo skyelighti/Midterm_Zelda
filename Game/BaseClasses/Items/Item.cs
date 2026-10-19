@@ -8,16 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace GameBase.Items;
-public abstract class Item : GameObject, IInteractable
+public abstract class Item : GameObject
 {
     public ItemInfo Info { get; protected set; }
-    public string ID { get; protected set; }
 
-    public bool CanInteract { get; protected set; } = true;
 
     public HitboxComponent hitbox;
 
-
+    public InteractableComponent interact;
     //should i have a data container for items? like a scriptable object? 
 
 
@@ -28,13 +26,17 @@ public abstract class Item : GameObject, IInteractable
         var hb = new HitboxComponent(GetComponent<TransformComponent>(), this);
         hitbox = hb;
         AddComponent(hb);
+        var i = new InteractableComponent(this);
+        interact = i;
+        AddComponent(i);
         hb.CollisionStay += OnCollision;
         hb.CollisionEnter += OnCollisionEnter;
         hb.CollisionExit += OnCollisionExit;
+        i.Interacted += OnInteract;
     }
-
-    public abstract void Interact(GameObject player);
-
+    public virtual void OnInteract(GameObject obj) { 
+        //checking for interaction is already handled by the component
+    }
     public virtual void OnCollision(ICollidable col)
     {
     }
