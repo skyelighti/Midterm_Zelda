@@ -5,7 +5,6 @@ mainly to speed up homework completion (aka copying my code from project a to pr
 will probably be updating pretty frequently as i figure things out
 
 ## TODO:
--  Allow for mouse and keyboard input handling
 -  anim state machine? 
 -  particle system/sprite effects
 -  shaders!!

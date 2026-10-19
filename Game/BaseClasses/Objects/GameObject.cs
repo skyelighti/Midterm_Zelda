@@ -12,31 +12,35 @@ namespace GameBase;
 
 public class GameObject
 {
-    public Transform transform { get; }
+    public TransformComponent transformC { get; }
+    public Transform transform => transformC.transform;
 
     public bool IsActive { get; private set; } = true;
     //readonly mainly for pooling
     public string name { get; protected set; }
     // identifier 
-    public Sprite sprite { get; protected set; }
-
+    public SpriteComponent spriteC { get; }
+    public Sprite sprite => spriteC.sprite;
     public Scene ownerScene { get; protected set; }
     public bool ActiveOnSceneEnter = true;
     public Layer layer { get; protected set; } = Layer.Default; 
     private readonly List<IComponent> components = new();
 
 
-    public bool spriteVisible = true;
-    float invisibilityTimer = 0f;
+    //public bool spriteVisible = true;
+    //float invisibilityTimer = 0f;
     public GameObject(string spriteName, Scene owner, string name = null)
     {
-        this.name = name;
-        sprite = Services.Sprites.CreateSprite(spriteName);
-        ownerScene = owner;
 
         var trans = new TransformComponent(Vector2.Zero, 0, new Vector2(64, 64), this);
-        transform = trans.transform;
+        transformC = trans;
         components.Add(trans);
+
+        this.name = name;
+        var s = new SpriteComponent(spriteName, this);
+        spriteC = s;
+        components.Add(spriteC);
+        ownerScene = owner;
 
     }
 
@@ -52,18 +56,6 @@ public class GameObject
                 component.Update(gameTime);
             }
         }
-
-        if (!spriteVisible)
-        {
-            invisibilityTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (invisibilityTimer <= 0)
-            {
-                spriteVisible = true;
-            }
-        }
-        if (!IsActive) { return; }
-        sprite.Update(gameTime);
-        //anims!!
     }
     public void UpdateName(string newName)
     {
@@ -72,10 +64,7 @@ public class GameObject
     }
     public void UpdateSprite(Sprite newSprite)
     {
-        //updates gameobject sprite
-        newSprite.transform.scale = sprite.transform.scale;
-        sprite = newSprite;
-
+        spriteC.UpdateSprite(newSprite);
     }
     public void UpdateLocationX(float x)
     {
@@ -97,30 +86,22 @@ public class GameObject
     {
         transform.scale = new Vector2(x, y);
         //updates gameobject pixel size
-        sprite.transform.scale.X = (float)x / sprite.Region.Width;
-        sprite.transform.scale.Y = (float)y / sprite.Region.Height;
+        spriteC.UpdateSize(x, y);
 
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        if (IsActive && spriteVisible)
-        {
-            sprite.Draw(spriteBatch, transform.position);
-        }
+
         // first rect draws location and size, second rectangle is spritesheet location and size, color is tinting
 
         //should the object that inherits from this handle draw? or should the base handle?
+        spriteC.Draw(spriteBatch);
     }
 
     public void SetActive(bool state)
     {
         IsActive = state;
-    }
-    public void HideFor(float seconds)
-    {
-        invisibilityTimer = seconds;
-        spriteVisible = false;
     }
     public void AddComponent(IComponent c)
     {
