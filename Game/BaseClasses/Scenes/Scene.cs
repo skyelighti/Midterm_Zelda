@@ -66,7 +66,7 @@ public abstract class Scene
             {
                 var cols = obj.GetComponents<ICollidable>();
                 foreach (IComponent c in cols) {
-                    RemoveCollider(c as ICollidable);
+                    AddCollider(c as ICollidable);
                 }
             }
         }
@@ -120,7 +120,7 @@ public abstract class Scene
                 var cols = g.GetComponents<ICollidable>();
                 foreach (IComponent c in cols)
                 {
-                    AddCollider(c as ICollidable);
+                    RemoveCollider(c as ICollidable);
                 }
             }
         }

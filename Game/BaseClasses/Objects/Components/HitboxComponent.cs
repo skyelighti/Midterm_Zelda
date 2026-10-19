@@ -49,6 +49,8 @@ public class HitboxComponent : Component, ICollidable
     {
         owner = o;
         var hb = new Hitbox(o);
+        hitbox = hb;
+        transformComponent = o.GetComponent<TransformComponent>();
     }
 
     public void OnCollision(ICollidable other)
@@ -63,6 +65,7 @@ public class HitboxComponent : Component, ICollidable
 
     public void OnCollisionExit(ICollidable other)
     {
+
         hitbox.OnCollisionExit(other);
     }
     public bool SetTrigger(bool state)

@@ -48,6 +48,7 @@ public class Hitbox : ICollidable
 
     public void OnCollisionEnter(ICollidable other)
     {
+
         CollisionEnter?.Invoke(other);
     }
 
