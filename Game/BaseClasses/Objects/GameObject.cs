@@ -51,7 +51,7 @@ public class GameObject
         //collision handler
         foreach (IComponent component in components)
         {
-            if (component.IsActive)
+            if (component is IObject o && o.activeSelf)
             {
                 component.Update(gameTime);
             }
@@ -137,5 +137,8 @@ public class GameObject
         }
 
         return c;
+    }
+    public virtual void OnDestroy() { 
+        //object subscription clean up here.
     }
 }

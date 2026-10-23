@@ -29,10 +29,10 @@ public abstract class Item : GameObject
         var i = new InteractableComponent(this);
         interact = i;
         AddComponent(i);
-        hb.CollisionStay += OnCollision;
-        hb.CollisionEnter += OnCollisionEnter;
-        hb.CollisionExit += OnCollisionExit;
-        i.Interacted += OnInteract;
+        hitbox.CollisionStay += OnCollision;
+        hitbox.CollisionEnter += OnCollisionEnter;
+        hitbox.CollisionExit += OnCollisionExit;
+        interact.Interacted += OnInteract;
     }
     public virtual void OnInteract(GameObject obj) { 
         //checking for interaction is already handled by the component
@@ -46,5 +46,12 @@ public abstract class Item : GameObject
     public virtual void OnCollisionExit(ICollidable col)
     {
     }
-
+    public override void OnDestroy()
+    {
+        hitbox.CollisionStay -= OnCollision;
+        hitbox.CollisionEnter -= OnCollisionEnter;
+        hitbox.CollisionExit -= OnCollisionExit;
+        interact.Interacted -= OnInteract;
+        base.OnDestroy();
+    }
 }

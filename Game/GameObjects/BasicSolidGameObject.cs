@@ -35,4 +35,11 @@ public class BasicSolidGameObject : GameObject
     public void OnCollisionExit(ICollidable col)
     {
     }
+    public override void OnDestroy()
+    {
+        hitbox.CollisionStay -= OnCollision;
+        hitbox.CollisionEnter -= OnCollisionEnter;
+        hitbox.CollisionExit -= OnCollisionExit;
+        base.OnDestroy();
+    }
 }

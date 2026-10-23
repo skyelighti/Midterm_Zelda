@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GameBase;
 
-public class Hitbox : ICollidable
+public class Hitbox : ICollidable, IObject
 {
 
     public bool IsTrigger { get; private set; }
@@ -25,7 +25,7 @@ public class Hitbox : ICollidable
 
     public Layer layer { get; init; } = Layer.Default;
 
-    public bool IsActive { get; private set; } = true;
+    public bool activeSelf { get; private set; } = true;
 
     public Hitbox(Transform t, GameObject o = null)
     {
@@ -61,10 +61,9 @@ public class Hitbox : ICollidable
         IsTrigger = state;
         return IsTrigger;
     }
-    public bool SetActive(bool state)
+    public void SetActive(bool state)
     {
-        IsActive = state;
-        return IsActive;
+        activeSelf = state;
     }
     public bool SetColliderActive(bool state)
     {
@@ -74,5 +73,10 @@ public class Hitbox : ICollidable
     public void UpdateTransform(Transform t)
     {
         transform = t;
+    }
+
+    public void OnDestroy()
+    {
+        //nothing to cleanup
     }
 }

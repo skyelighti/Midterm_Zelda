@@ -63,7 +63,7 @@ public partial class Player : GameObject
     
     }
     public void OnKeyDown(GameAction action) { 
-    
+        //player movement component handles this
     }
 
     public void OnKeyPressed(GameAction action) {
@@ -79,5 +79,14 @@ public partial class Player : GameObject
             moveC.SetActive(false);
             //theoretically should still be able to access values
         }
+    }
+    public override void OnDestroy() {
+        hitbox.CollisionEnter -= OnCollisionEnter;
+        hitbox.CollisionStay -= OnCollisionStay;
+        hitbox.CollisionExit -= OnCollisionExit;
+        Services.Input.InputMapChanged -= OnInputMapChanged;
+        Services.Input.ActionKeyDown -= OnKeyDown;
+        Services.Input.ActionPressed -= OnKeyPressed;
+        Services.Input.ActionReleased -= OnKeyReleased;
     }
 }
