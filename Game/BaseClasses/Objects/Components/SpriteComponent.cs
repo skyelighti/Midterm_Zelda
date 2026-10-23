@@ -39,11 +39,11 @@ public class SpriteComponent : Component
                 spriteVisible = true;
             }
         }
-        if (!IsActive) { return; }
+        if (!activeSelf) { return; }
         sprite.Update(gameTime);
     }
     public void Draw(SpriteBatch spriteBatch) {
-        if (IsActive && spriteVisible)
+        if (activeSelf && spriteVisible)
         {
             sprite.Draw(spriteBatch, owner.transform.position);
         }

@@ -22,13 +22,14 @@ public partial class Player : GameObject
     StateMachine animState = new();
     public Player(string spriteName, Scene owner, string name = null) : base(spriteName, owner, name)
     {
+        AnimatedSprite s = Services.Sprites.CreateAnimatedSprite("placeholder", "placeholder");
+        spriteC.UpdateSprite(s);
+
         animState.SetNumOfStates(3);
         animState.SetStateFunctions((int)PlayerAnimationStates.Idle, EnterIdle, UpdateIdle, ExitIdle);
         animState.SetStateFunctions((int)PlayerAnimationStates.Moving, EnterMoving, UpdateMoving, ExitMoving);
         animState.SetStateFunctions((int)PlayerAnimationStates.Attacking, EnterAttack, UpdateAttack, ExitAttack);
-
-        AnimatedSprite s = Services.Sprites.CreateAnimatedSprite("placeholder", "placeholder");
-        spriteC.UpdateSprite(s);
+        animState.SetState((int)PlayerAnimationStates.Idle);
 
         hitbox = new HitboxComponent(transformC, this);
         hitbox.CollisionEnter += OnCollisionEnter;

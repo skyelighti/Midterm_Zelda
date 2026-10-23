@@ -35,10 +35,10 @@ public class CollisionManager
         currCollisions.Clear();
         for (int i = 0; i < CollidableObjects.Count; i++)
         {
-            if (!CollidableObjects[i].IsActive || !CollidableObjects[i].ColliderIsActive) { continue; }
+            if (!CollidableObjects[i].activeSelf || !CollidableObjects[i].ColliderIsActive) { continue; }
             for (int j = i + 1; j < CollidableObjects.Count; j++)
             {
-                if (!CollidableObjects[j].IsActive || !CollidableObjects[j].ColliderIsActive) { continue; }
+                if (!CollidableObjects[j].activeSelf || !CollidableObjects[j].ColliderIsActive) { continue; }
                 if (CollidableObjects[i].BoxCollider.Intersects(CollidableObjects[j].BoxCollider) && (!removalSet.Contains(CollidableObjects[i]) && !removalSet.Contains(CollidableObjects[j])))
                 {
                     // Tile colliders use boxes; sprites can use the original pixel check.
@@ -67,7 +67,7 @@ public class CollisionManager
                     }
                     //replace w piixel perfect if there time
 
-                    if (!CollidableObjects[i].IsActive) { break; }
+                    if (!CollidableObjects[i].activeSelf) { break; }
                     //prevent bullet taking out more than 1
                 }
             }
@@ -143,7 +143,7 @@ public class CollisionManager
         );
         foreach (ICollidable c in CollidableObjects)
         {
-            if (c == gameobject || !c.IsActive || !c.ColliderIsActive) { continue; }
+            if (c == gameobject || !c.activeSelf || !c.ColliderIsActive) { continue; }
             if (gameobject.owner != null && gameobject.owner == c.owner)
             {
                 continue;
@@ -167,7 +167,7 @@ public class CollisionManager
         List<ICollidable> overlap = new List<ICollidable>();
         foreach (ICollidable c in CollidableObjects)
         {
-            if (!c.IsActive || !c.ColliderIsActive) { continue; }
+            if (!c.activeSelf || !c.ColliderIsActive) { continue; }
 
             //gameobject center, or else everything else is at the top le
 
@@ -271,7 +271,7 @@ public class CollisionManager
             {
                 continue;
             }
-            if (col == obj || !col.IsActive || !col.ColliderIsActive || col.IsTrigger || obj.IsTrigger) { continue; }
+            if (col == obj || !col.activeSelf || !col.ColliderIsActive || col.IsTrigger || obj.IsTrigger) { continue; }
             bool vertOverlap = (obj.BoxCollider.Top < col.BoxCollider.Bottom && obj.BoxCollider.Bottom > col.BoxCollider.Top);
             if (!vertOverlap) { continue; }
             if (obj is IPixelCollidable && col is IPixelCollidable)
@@ -313,7 +313,7 @@ public class CollisionManager
         float finaldist = yDist;
         foreach (ICollidable col in CollidableObjects)
         {
-            if (col == obj || !col.IsActive || !col.ColliderIsActive || col.IsTrigger || obj.IsTrigger) { continue; }
+            if (col == obj || !col.activeSelf || !col.ColliderIsActive || col.IsTrigger || obj.IsTrigger) { continue; }
             bool hOverlap = (obj.BoxCollider.Right > col.BoxCollider.Left && obj.BoxCollider.Left < col.BoxCollider.Right);
             if (!hOverlap) { continue; }
             if (obj is IPixelCollidable && col is IPixelCollidable)

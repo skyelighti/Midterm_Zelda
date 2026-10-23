@@ -143,6 +143,27 @@
 /processorParam:Version=3.8.5.1
 /build:Assets/WalkingSheet.png
 
+#begin AtlasInfo/DownAttackAtlas.xml
+/copy:AtlasInfo/DownAttackAtlas.xml
+
+#begin AtlasInfo/LeftAttackAtlas.xml
+/copy:AtlasInfo/LeftAttackAtlas.xml
+
+#begin AtlasInfo/OctorockAtlas.xml
+/copy:AtlasInfo/OctorockAtlas.xml
+
+#begin AtlasInfo/RightAttackAtlas.xml
+/copy:AtlasInfo/RightAttackAtlas.xml
+
+#begin AtlasInfo/TektiteAtlas.xml
+/copy:AtlasInfo/TektiteAtlas.xml
+
+#begin AtlasInfo/UpAttackAtlas.xml
+/copy:AtlasInfo/UpAttackAtlas.xml
+
+#begin AtlasInfo/WalkingAtlas.xml
+/copy:AtlasInfo/WalkingAtlas.xml
+
 #begin LoadInfo/DialogueList.xml
 /copy:LoadInfo/DialogueList.xml
 
@@ -151,6 +172,9 @@
 
 #begin LoadInfo/NPCDefinitions.xml
 /copy:LoadInfo/NPCDefinitions.xml
+
+#begin LoadInfo/SpriteSheetAnimations.json
+/copy:LoadInfo/SpriteSheetAnimations.json
 
 #begin LoadInfo/TileMap1.xml
 /copy:LoadInfo/TileMap1.xml

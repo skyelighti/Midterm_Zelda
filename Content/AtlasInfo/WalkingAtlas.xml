@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TextureAtlas>
+    <Texture>Assets/WalkingSheet</Texture>
+    <Regions>
+        <!-- normal palette -->
+        <Region name="walkd0" x="0" y="0" width="16" height="16" />
+        <Region name="walkd1" x="16" y="0" width="16" height="16" />
+        <Region name="walkr0" x="32" y="0" width="16" height="16" />
+        <Region name="walkr1" x="48" y="0" width="16" height="16" />
+        <Region name="walku0" x="64" y="0" width="16" height="16" />
+        <Region name="walku1" x="80" y="0" width="16" height="16" />
+        <Region name="walkl0" x="96" y="0" width="16" height="16" />
+        <Region name="walkl1" x="112" y="0" width="16" height="16" />
+
+        <!-- alternate palette 1 -->
+        <Region name="walkd0_alt1" x="0" y="16" width="16" height="16" />
+        <Region name="walkd1_alt1" x="16" y="16" width="16" height="16" />
+        <Region name="walkr0_alt1" x="32" y="16" width="16" height="16" />
+        <Region name="walkr1_alt1" x="48" y="16" width="16" height="16" />
+        <Region name="walku0_alt1" x="64" y="16" width="16" height="16" />
+        <Region name="walku1_alt1" x="80" y="16" width="16" height="16" />
+        <Region name="walkl0_alt1" x="96" y="16" width="16" height="16" />
+        <Region name="walkl1_alt1" x="112" y="16" width="16" height="16" />
+
+        <!-- alternate palette 2 -->
+        <Region name="walkd0_alt2" x="0" y="32" width="16" height="16" />
+        <Region name="walkd1_alt2" x="16" y="32" width="16" height="16" />
+        <Region name="walkr0_alt2" x="32" y="32" width="16" height="16" />
+        <Region name="walkr1_alt2" x="48" y="32" width="16" height="16" />
+        <Region name="walku0_alt2" x="64" y="32" width="16" height="16" />
+        <Region name="walku1_alt2" x="80" y="32" width="16" height="16" />
+        <Region name="walkl0_alt2" x="96" y="32" width="16" height="16" />
+        <Region name="walkl1_alt2" x="112" y="32" width="16" height="16" />
+
+        <!-- alternate palette 3 -->
+        <Region name="walkd0_alt3" x="0" y="48" width="16" height="16" />
+        <Region name="walkd1_alt3" x="16" y="48" width="16" height="16" />
+        <Region name="walkr0_alt3" x="32" y="48" width="16" height="16" />
+        <Region name="walkr1_alt3" x="48" y="48" width="16" height="16" />
+        <Region name="walku0_alt3" x="64" y="48" width="16" height="16" />
+        <Region name="walku1_alt3" x="80" y="48" width="16" height="16" />
+        <Region name="walkl0_alt3" x="96" y="48" width="16" height="16" />
+        <Region name="walkl1_alt3" x="112" y="48" width="16" height="16" />
+    </Regions>
+</TextureAtlas>
