@@ -33,7 +33,7 @@ public class CaveSwordScene : Scene
         //foreach spawn in spawns: get location, and spawn type here
         //resettiilecolliders
         foreach (var col in ground.CreateColliders()) {
-            AddCollider(col);
+            AddCollider(col, true);
         }
 
         foreach (SpawnInfo spawn in Spawns) {
