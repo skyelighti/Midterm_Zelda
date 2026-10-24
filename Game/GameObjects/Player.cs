@@ -22,8 +22,9 @@ public partial class Player : GameObject
     StateMachine animState = new();
     public Player(string spriteName, Scene owner, string name = null) : base(spriteName, owner, name)
     {
-        AnimatedSprite s = Services.Sprites.CreateAnimatedSprite("placeholder", "placeholder");
+        AnimatedSprite s = Services.Sprites.CreateAnimatedSprite("PlayerWalking", "IdleDown");
         spriteC.UpdateSprite(s);
+        UpdateSize(16, 16);
 
         animState.SetNumOfStates(3);
         animState.SetStateFunctions((int)PlayerAnimationStates.Idle, EnterIdle, UpdateIdle, ExitIdle);
@@ -75,10 +76,14 @@ public partial class Player : GameObject
     }
 
     public void OnInputMapChanged(InputActionMap map) {
-        if (map != InputActionMap.Gameplay) {
+        if (map != InputActionMap.Gameplay)
+        {
             //diable anything thats gameplay only
             moveC.SetActive(false);
             //theoretically should still be able to access values
+        }
+        else {
+            moveC.SetActive(true);
         }
     }
     public override void OnDestroy() {

@@ -19,6 +19,15 @@ public partial class ContentLoader
     public ContentLoader(ContentManager content, SpriteLibrary sprites)
     {
         //initalize all textures here. 
+
+        Texture2D texture = content.Load<Texture2D>("Assets/placeholder");
+
+        TextureAtlas atlas = new TextureAtlas(texture);
+        atlas.AddRegion("placeholder", 0, 0, texture.Width, texture.Height);
+
+        sprites.AddRegion("placeholder", atlas.GetRegion("placeholder"));
+        //make a function that just loads from file lwk
+
         Init(content, sprites);
 
     }

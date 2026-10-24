@@ -9,6 +9,8 @@ namespace GameBase;
 public enum SceneID
 {
     //StartScene,
-    BasicGameScene
+    GameScene,
+    CaveSwordScene,
+    CaveTradeScene
     //EndScene
 }

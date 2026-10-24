@@ -10,9 +10,13 @@ namespace GameBase;
 public class CollisionManager
 {
     public static CollisionManager Instance { get; private set; } = new();
-    public List<ICollidable> CollidableObjects { get; private set; }
+    public List<ICollidable> CollidableObjects { get; private set; } = new();
+    //this is for objects that actually move
+    public List<ICollidable> StaticCollidableObjects { get; private set; } = new();
+    //holy moly the lag
     //just have others add on init?
     private HashSet<ICollidable> additionSet = new();
+    private HashSet<ICollidable> staticAdditionSet = new();
     private HashSet<ICollidable> removalSet = new();
     float ascaleX;
     float ascaleY;
@@ -23,7 +27,6 @@ public class CollisionManager
     public CollisionManager()
     {
         Instance = this;
-        CollidableObjects = new List<ICollidable>();
         //needs a list of everything with Icolliable & list needs to update on spawn of new objects? 
     }
     public void Update(GameTime gameTime)
@@ -70,6 +73,43 @@ public class CollisionManager
                     if (!CollidableObjects[i].activeSelf) { break; }
                     //prevent bullet taking out more than 1
                 }
+             
+            }
+            if (StaticCollidableObjects == null) { continue; }
+            for (int x = 0; x < StaticCollidableObjects.Count; x++)
+            {
+                if (!StaticCollidableObjects[x].activeSelf || !StaticCollidableObjects[x].ColliderIsActive) { continue; }
+                if (CollidableObjects[i].BoxCollider.Intersects(StaticCollidableObjects[x].BoxCollider) && (!removalSet.Contains(CollidableObjects[i]) && !removalSet.Contains(StaticCollidableObjects[x])))
+                {
+                    // Tile colliders use boxes; sprites can use the original pixel check.
+                    bool collision = true;
+                    if (CollidableObjects[i] is IPixelCollidable pixelA && StaticCollidableObjects[x] is IPixelCollidable pixelB)
+                    {
+                        collision = PixelPerfectCollision(pixelA, pixelB);
+                    }
+                    if (collision)
+                    {
+                        if (CollidableObjects[i].owner != null && CollidableObjects[i].owner == StaticCollidableObjects[x].owner)
+                        {
+                            continue;
+                        }
+                        currCollisions.Add((CollidableObjects[i], StaticCollidableObjects[x]));
+
+                        CollidableObjects[i].OnCollision(StaticCollidableObjects[x]);
+                        StaticCollidableObjects[x].OnCollision(CollidableObjects[i]);
+                        // Triggers and fixed tile colliders must not be pushed apart.
+                        if (!CollidableObjects[i].IsTrigger && !StaticCollidableObjects[x].IsTrigger &&
+                            CollidableObjects[i] is IPixelCollidable && StaticCollidableObjects[x] is IPixelCollidable)
+                        {
+                            SeperateObjects(CollidableObjects[i], StaticCollidableObjects[x]);
+                        }
+
+                    }
+                    //replace w piixel perfect if there time
+
+                    if (!CollidableObjects[i].activeSelf) { break; }
+
+                }
             }
         }
         foreach (var pair in currCollisions)
@@ -96,15 +136,25 @@ public class CollisionManager
         foreach (var c in additionSet) {
             CollidableObjects.Add(c);
         }
-        foreach(var c in removalSet)
+        foreach (var c in staticAdditionSet)
+        {
+            StaticCollidableObjects.Add(c);
+        }
+        foreach (var c in removalSet)
         {
             CollidableObjects.Remove(c);
+             StaticCollidableObjects.Remove(c);
         }
         removalSet.Clear();
         additionSet.Clear();
+        staticAdditionSet.Clear();
     }
-    public void AddCollidable(ICollidable col)
+    public void AddCollidable(ICollidable col, bool isStatic = false)
     {
+        if (isStatic) {
+            staticAdditionSet.Add(col);
+            return;
+        }
         additionSet.Add(col);
         //CollidableObjects.Add(col);
     }
@@ -183,11 +233,11 @@ public class CollisionManager
         return overlap;
     }
     //these methodsd are used mainly for scene loading and unloading
-    public void AddCollidableList(List<ICollidable> cols)
+    public void AddCollidableList(List<ICollidable> cols, bool isStatic = false)
     {
         foreach (ICollidable c in cols)
         {
-            AddCollidable(c);
+            AddCollidable(c, isStatic);
         }
     }
     public void RemoveColliderList(List<ICollidable> cols)
@@ -265,7 +315,7 @@ public class CollisionManager
     float MoveHorizontal(float xDist, ICollidable obj)
     {
         float finaldist = xDist;
-        foreach (ICollidable col in CollidableObjects)
+        foreach (ICollidable col in GetAllColliders())
         {
             if (obj.owner != null && obj.owner == col.owner)
             {
@@ -302,6 +352,7 @@ public class CollisionManager
             }
 
         }
+
         if (finaldist < xDist)
         {
             //collision has occured?
@@ -311,7 +362,7 @@ public class CollisionManager
     float MoveVertical(float yDist, ICollidable obj)
     {
         float finaldist = yDist;
-        foreach (ICollidable col in CollidableObjects)
+        foreach (ICollidable col in GetAllColliders())
         {
             if (col == obj || !col.activeSelf || !col.ColliderIsActive || col.IsTrigger || obj.IsTrigger) { continue; }
             bool hOverlap = (obj.BoxCollider.Right > col.BoxCollider.Left && obj.BoxCollider.Left < col.BoxCollider.Right);
@@ -351,5 +402,14 @@ public class CollisionManager
 
         }
         return finaldist;
+    }
+
+    IEnumerable<ICollidable> GetAllColliders()
+    {
+        foreach (ICollidable col in CollidableObjects)
+            yield return col;
+
+        foreach (ICollidable col in StaticCollidableObjects)
+            yield return col;
     }
 }

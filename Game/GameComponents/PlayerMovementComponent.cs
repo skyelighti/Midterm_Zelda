@@ -45,10 +45,10 @@ public class PlayerMovementComponent : MovementComponent
                 left = false;
                 break;
             case (GameAction.MoveUp):
-                up = true;
+                up = false;
                 break;
             case (GameAction.MoveDown):
-                down = true;  
+                down = false;  
                 break;
         }
     }

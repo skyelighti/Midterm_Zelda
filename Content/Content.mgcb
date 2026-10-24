@@ -91,6 +91,19 @@
 /processorParam:Version=3.8.5.1
 /build:Assets/LeftAttackSheet_32_16.png
 
+#begin Assets/LinkSword.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:Assets/LinkSword.png
+
 #begin Assets/OctorockSheet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -104,6 +117,32 @@
 /processorParam:Version=3.8.5.1
 /build:Assets/OctorockSheet.png
 
+#begin Assets/oldman.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:Assets/oldman.png
+
+#begin Assets/placeholder.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:Assets/placeholder.png
+
 #begin Assets/RightAttackSheet_32_16.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -116,6 +155,32 @@
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.1
 /build:Assets/RightAttackSheet_32_16.png
+
+#begin Assets/Smoke.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:Assets/Smoke.png
+
+#begin Assets/spritesheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:Assets/spritesheet.png
 
 #begin Assets/Sword.png
 /importer:TextureImporter
@@ -181,6 +246,9 @@
 #begin AtlasInfo/RightAttackAtlas.xml
 /copy:AtlasInfo/RightAttackAtlas.xml
 
+#begin AtlasInfo/SmokeAtlas.xml
+/copy:AtlasInfo/SmokeAtlas.xml
+
 #begin AtlasInfo/TektiteAtlas.xml
 /copy:AtlasInfo/TektiteAtlas.xml
 
@@ -204,4 +272,7 @@
 
 #begin LoadInfo/TileMap1.xml
 /copy:LoadInfo/TileMap1.xml
+
+#begin LoadInfo/TileMap2.xml
+/copy:LoadInfo/TileMap2.xml
 

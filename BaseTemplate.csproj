@@ -15,6 +15,7 @@
     <None Remove="Icon.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\LoadInfo\TileMap2.xml" />
     <Content Include="Content\LoadInfo\TileMap1.xml" />
   </ItemGroup>
   <ItemGroup>

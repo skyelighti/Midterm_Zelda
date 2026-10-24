@@ -15,6 +15,7 @@ public abstract class Scene
     List<GameObject> sceneObjects = new List<GameObject>();
     List<GameObject> toRemove = new List<GameObject>();
     List<ICollidable> sceneColliders = new List<ICollidable>();
+    List<ICollidable> staticSceneColliders = new();
     public TextureAtlas atlas;
     public SceneUI sceneUI { get; protected set; }
     public bool isActive { get; protected set; } = false;
@@ -43,6 +44,7 @@ public abstract class Scene
             //this might need modification, ex. object pools should not be active at enter.
         }
         CollisionManager.Instance.AddCollidableList(sceneColliders);
+        CollisionManager.Instance.AddCollidableList(staticSceneColliders, true);
     }
     public virtual void ExitScene()
     {
@@ -54,10 +56,11 @@ public abstract class Scene
             g.SetActive(false);
         }
         CollisionManager.Instance.RemoveColliderList(sceneColliders);
+        CollisionManager.Instance.RemoveColliderList(staticSceneColliders);
         isActive = false;
     }
 
-    public void AddObject(GameObject obj)
+    public void AddObject(GameObject obj, bool isStatic = false)
     {
         if (!sceneObjects.Contains(obj))
         {
@@ -66,7 +69,7 @@ public abstract class Scene
             {
                 var cols = obj.GetComponents<ICollidable>();
                 foreach (IComponent c in cols) {
-                    AddCollider(c as ICollidable);
+                    AddCollider(c as ICollidable, isStatic);
                 }
             }
         }
@@ -81,14 +84,21 @@ public abstract class Scene
         }
     }
 
-    public void AddCollider(ICollidable col)
+    public void AddCollider(ICollidable col, bool isStatic = false)
     {
         if (!sceneColliders.Contains(col))
         {
-            sceneColliders.Add(col);
+            if (isStatic)
+            {
+                staticSceneColliders.Add(col);
+            }
+            else
+            {
+                sceneColliders.Add(col);
+            }
             if (isActive)
             {
-                CollisionManager.Instance.AddCollidable(col);
+                CollisionManager.Instance.AddCollidable(col, isStatic);
             }
         }
     }
@@ -98,6 +108,7 @@ public abstract class Scene
         if (sceneColliders.Contains(col))
         {
             sceneColliders.Remove(col);
+            staticSceneColliders.Remove(col);
             CollisionManager.Instance.RemoveCollider(col);
         }
     }

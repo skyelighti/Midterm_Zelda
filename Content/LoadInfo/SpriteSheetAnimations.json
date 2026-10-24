@@ -7,7 +7,7 @@
     "frameDuration": 0.2,
     "animations": {
       "Fire": {
-        "framesindx": [ 3, 4 ],
+        "framesindx": [ 2, 3],
         "isLooping": true,
         "isReversed": false,
         "isPingPong": false
@@ -21,7 +21,7 @@
     "frameWidth": 16,
     "frameHeight": 16,
     "frameDuration": 0.2,
-    "animations": { }
+    "animations": {}
   },
 
 
@@ -217,5 +217,24 @@
       }
 
     }
+  },
+
+  {
+    "name": "Smoke",
+    "texture": "Assets/Smoke",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.06,
+    "animations": {
+
+      "AttackRight": {
+        "framesindx": [ 0, 1, 2],
+        "isLooping": false,
+        "isReversed": false,
+        "isPingPong": false
+      }
+
+    }
   }
+
 ]
