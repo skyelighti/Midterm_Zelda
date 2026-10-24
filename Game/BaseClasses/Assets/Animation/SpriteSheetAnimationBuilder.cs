@@ -39,7 +39,7 @@ public static class SpriteSheetAnimationBuilder
                         atlas.AddRegion(index.ToString(), column * info.frameWidth, row * info.frameHeight, info.frameWidth, info.frameHeight);
                     }
                 }
-                SpriteSheet sheet = new SpriteSheet(info.name, atlas);
+                SpriteSheet sheet = new SpriteSheet(info.name, atlas, info.frameHeight, info.frameWidth, columns, rows);
                 Dictionary<string, List<int>> anims = new();
                 foreach (var animation in info.animations) {
                     string animName = animation.Key;

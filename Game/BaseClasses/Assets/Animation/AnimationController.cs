@@ -40,6 +40,7 @@ public class AnimationController: IAnimationController
         SetFrame(direction == 1 ? 0 : FrameCount - 1);
         //need to copy playback settings
     }
+
     public void SetSpeed(double speed) {
         if (speed >= 0) {
             Speed = speed;

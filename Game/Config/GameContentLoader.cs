@@ -14,6 +14,6 @@ public partial class ContentLoader
     //me being intimidated by mason last year turns out to be actually useful
     partial void GameSpecificInit(ContentManager content, SpriteLibrary sprites) {
         //game specific content goes here!!
-        SpriteSheetAnimationBuilder.FromFile(content, "LoadInfo/SpriteSheetAnimations.json", Services.Sprites);
+        SpriteSheetAnimationBuilder.FromFile(content, "LoadInfo/SpriteSheetAnimations.json", sprites);
     }
 }

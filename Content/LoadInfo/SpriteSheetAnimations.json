@@ -1,5 +1,40 @@
 [
   {
+    "name": "CaveMap",
+    "texture": "Assets/cave",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.2,
+    "animations": {
+      "Fire": {
+        "framesindx": [ 3, 4 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      }
+    }
+  },
+
+  {
+    "name": "CaveMap2",
+    "texture": "Assets/cave2",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.2,
+    "animations": { }
+  },
+
+
+  {
+    "name": "OverworldMap",
+    "texture": "Assets/spritesheet",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0,
+    "animations": {}
+  },
+
+  {
     "name": "PlayerWalking",
     "texture": "Assets/WalkingSheet",
     "frameWidth": 16,
