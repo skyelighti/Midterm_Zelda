@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace GameBase.Tiles;
 
-public class TileCollider : ICollidable
+public class TileCollider : ICollidable, IObject
 {
     public TileInfo TileInfo { get; private set; }
-
 
     public Rectangle BoxCollider => CalculateBounds();
 
     public Transform transform { get; }
 
-    public bool IsActive { get; private set; } = true;
+    public bool activeSelf { get; private set; } = true;
 
     public bool ColliderIsActive { get { return TileInfo.IsSolid || TileInfo.IsTrigger; } }
 
@@ -26,6 +25,8 @@ public class TileCollider : ICollidable
     {
         get { return TileInfo.layer; }
     }
+
+    public GameObject owner => null;
 
     public TileCollider(TileInfo tileInfo, Transform transform)
     {
@@ -58,6 +59,9 @@ public class TileCollider : ICollidable
     }
     public void SetActive(bool active)
     {
-        IsActive = active;
+        activeSelf = active;
+    }
+    public void OnDestroy() { 
+    
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TextureAtlas>
+    <Texture>Assets/LeftAttackSheet_32_16</Texture>
+    <Regions>
+        <!-- normal palette -->
+        <Region name="attackl0" x="0" y="0" width="32" height="16" />
+        <Region name="attackl1" x="32" y="0" width="32" height="16" />
+        <Region name="attackl2" x="64" y="0" width="32" height="16" />
+        <Region name="attackl3" x="96" y="0" width="32" height="16" />
+
+        <!-- alternate palette 1 -->
+        <Region name="attackl0_alt1" x="0" y="16" width="32" height="16" />
+        <Region name="attackl1_alt1" x="32" y="16" width="32" height="16" />
+        <Region name="attackl2_alt1" x="64" y="16" width="32" height="16" />
+        <Region name="attackl3_alt1" x="96" y="16" width="32" height="16" />
+
+        <!-- alternate palette 2 -->
+        <Region name="attackl0_alt2" x="0" y="32" width="32" height="16" />
+        <Region name="attackl1_alt2" x="32" y="32" width="32" height="16" />
+        <Region name="attackl2_alt2" x="64" y="32" width="32" height="16" />
+        <Region name="attackl3_alt2" x="96" y="32" width="32" height="16" />
+
+        <!-- alternate palette 3 -->
+        <Region name="attackl0_alt3" x="0" y="48" width="32" height="16" />
+        <Region name="attackl1_alt3" x="32" y="48" width="32" height="16" />
+        <Region name="attackl2_alt3" x="64" y="48" width="32" height="16" />
+        <Region name="attackl3_alt3" x="96" y="48" width="32" height="16" />
+    </Regions>
+</TextureAtlas>

@@ -4,7 +4,7 @@
 
 		<Name>ItemName</Name>
 		<ID>itemID</ID>
-		<Type>itemType</Type>
-		<Sprite>itematlas.sprite</Sprite>
+		<Type>Weapon</Type>
+		<Sprite>placeholder</Sprite>
 	</Item>
 </ItemInfo>

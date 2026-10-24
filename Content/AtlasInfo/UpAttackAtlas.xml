@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TextureAtlas>
+    <Texture>Assets/UpAttackSheet_16_32</Texture>
+    <Regions>
+        <!-- normal palette -->
+        <Region name="attacku0" x="0" y="0" width="16" height="32" />
+        <Region name="attacku1" x="16" y="0" width="16" height="32" />
+        <Region name="attacku2" x="32" y="0" width="16" height="32" />
+        <Region name="attacku3" x="48" y="0" width="16" height="32" />
+
+        <!-- alternate palette 1 -->
+        <Region name="attacku0_alt1" x="0" y="32" width="16" height="32" />
+        <Region name="attacku1_alt1" x="16" y="32" width="16" height="32" />
+        <Region name="attacku2_alt1" x="32" y="32" width="16" height="32" />
+        <Region name="attacku3_alt1" x="48" y="32" width="16" height="32" />
+
+        <!-- alternate palette 2 -->
+        <Region name="attacku0_alt2" x="0" y="64" width="16" height="32" />
+        <Region name="attacku1_alt2" x="16" y="64" width="16" height="32" />
+        <Region name="attacku2_alt2" x="32" y="64" width="16" height="32" />
+        <Region name="attacku3_alt2" x="48" y="64" width="16" height="32" />
+
+        <!-- alternate palette 3 -->
+        <Region name="attacku0_alt3" x="0" y="96" width="16" height="32" />
+        <Region name="attacku1_alt3" x="16" y="96" width="16" height="32" />
+        <Region name="attacku2_alt3" x="32" y="96" width="16" height="32" />
+        <Region name="attacku3_alt3" x="48" y="96" width="16" height="32" />
+    </Regions>
+</TextureAtlas>

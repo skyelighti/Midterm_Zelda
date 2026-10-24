@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Tilemap>
+    <Tileset>
+        <name>CaveTilemap</name>
+		<sheet>CaveMap</sheet>
+    </Tileset>
+	<Tileset>
+		<name>CaveMap2</name>
+		<sheet>CaveMap2</sheet>
+	</Tileset>
+
+    <Tiles>
+		2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+		2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+		2,2,7,7,7,7,7,7,7,7,7,7,7,7,2,2,
+		2,2,7,7,7,7,7,7,7,7,7,7,7,7,2,2,
+		2,2,7,7,7,3,7,7,7,7,3,7,7,7,2,2,
+		2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,
+		2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,
+		2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,
+		2,2,0,0,0,0,0,0,0,0,0,0,0,0,2,2,
+		2,2,1,1,1,1,1,0,0,1,1,1,1,1,2,2,
+		2,2,2,2,2,2,2,0,0,2,2,2,2,2,2,2,
+		0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0
+	</Tiles>
+    <SolidTiles>
+		7 2 3 1
+	</SolidTiles>
+	<TriggerTiles>
+		8
+	</TriggerTiles>
+    <TileLayers>
+        <Layer name="Ground">2 1</Layer>
+        <Layer name="Exit">8</Layer>
+    </TileLayers>
+
+    <Spawns>
+        <Spawn type="Player" column="8" row="11" />
+    </Spawns>
+
+</Tilemap>

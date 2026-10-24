@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TextureAtlas>
+	<Texture>Assets/Smoke</Texture>
+	<Regions>
+		<Region name="smoke0" x="0" y="0" width="16" height="16" />
+		<Region name="smoke1" x="16" y="0" width="16" height="16" />
+		<Region name="smoke2" x="32" y="0" width="16" height="16" />
+	</Regions>
+</TextureAtlas>

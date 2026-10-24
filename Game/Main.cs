@@ -25,7 +25,7 @@ public class Main
         var sprites = new SpriteLibrary(content);
         var gameD = new GameDefinitions(content);
         //UIManager = new UIManager(content);
-        Services.Initalize( sprites, gameD, true, true);
+        Services.Initalize( sprites, gameD, true, false);
         //simplify sprite loading? 
 
         sceneManager = new SceneManager(content);
@@ -36,10 +36,11 @@ public class Main
     {
         // update everything else here as well?
         ScreenBounds = screenBounds;
-        sceneManager.Update(gameTime);
+        
         Services.Input.Update(gameTime);
         Services.Dialogue?.Update(gameTime);
         CollisionManager.Instance.Update(gameTime);
+        sceneManager.Update(gameTime);
         //UIManager.Update(gameTime);
     }
     public void Draw(SpriteBatch spriteBatch)

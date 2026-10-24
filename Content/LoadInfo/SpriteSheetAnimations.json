@@ -1,0 +1,240 @@
+[
+  {
+    "name": "CaveMap",
+    "texture": "Assets/cave",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.2,
+    "animations": {
+      "Fire": {
+        "framesindx": [ 2, 3],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      }
+    }
+  },
+
+  {
+    "name": "CaveMap2",
+    "texture": "Assets/cave2",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.2,
+    "animations": {}
+  },
+
+
+  {
+    "name": "OverworldMap",
+    "texture": "Assets/spritesheet",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0,
+    "animations": {}
+  },
+
+  {
+    "name": "PlayerWalking",
+    "texture": "Assets/WalkingSheet",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.12,
+    "animations": {
+
+      "IdleDown": {
+        "framesindx": [ 0 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      },
+
+      "WalkDown": {
+        "framesindx": [ 0, 1 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      },
+
+      "WalkRight": {
+        "framesindx": [ 2, 3 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      },
+
+      "WalkUp": {
+        "framesindx": [ 4, 5 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      },
+
+      "WalkLeft": {
+        "framesindx": [ 6, 7 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      }
+    }
+  },
+
+  {
+    "name": "PlayerAttackUp",
+    "texture": "Assets/UpAttackSheet_16_32",
+    "frameWidth": 16,
+    "frameHeight": 32,
+    "frameDuration": 0.06,
+    "animations": {
+
+      "AttackUp": {
+        "framesindx": [ 0, 1, 2, 3 ],
+        "isLooping": false,
+        "isReversed": false,
+        "isPingPong": false
+      }
+
+    }
+  },
+
+
+  {
+    "name": "PlayerAttackDown",
+    "texture": "Assets/DownAttackSheet_16_32",
+    "frameWidth": 16,
+    "frameHeight": 32,
+    "frameDuration": 0.06,
+    "animations": {
+
+      "AttackDown": {
+        "framesindx": [ 0, 1, 2, 3 ],
+        "isLooping": false,
+        "isReversed": false,
+        "isPingPong": false
+      }
+    }
+  },
+
+
+  {
+    "name": "PlayerAttackLeft",
+    "texture": "Assets/LeftAttackSheet_32_16",
+    "frameWidth": 32,
+    "frameHeight": 16,
+    "frameDuration": 0.06,
+    "animations": {
+
+      "AttackLeft": {
+        "framesindx": [ 0, 1, 2, 3 ],
+        "isLooping": false,
+        "isReversed": false,
+        "isPingPong": false
+      }
+
+    }
+  },
+
+
+  {
+    "name": "PlayerAttackRight",
+    "texture": "Assets/RightAttackSheet_32_16",
+    "frameWidth": 32,
+    "frameHeight": 16,
+    "frameDuration": 0.06,
+    "animations": {
+
+      "AttackRight": {
+        "framesindx": [ 0, 1, 2, 3 ],
+        "isLooping": false,
+        "isReversed": false,
+        "isPingPong": false
+      }
+
+    }
+  },
+
+
+  {
+    "name": "Octorock",
+    "texture": "Assets/OctorockSheet",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.16,
+    "animations": {
+
+      "WalkDown": {
+        "framesindx": [ 0, 1 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      },
+
+      "WalkLeft": {
+        "framesindx": [ 2, 3 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      },
+
+      "WalkUp": {
+        "framesindx": [ 4, 5 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      },
+
+      "WalkRight": {
+        "framesindx": [ 6, 7 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      }
+
+    }
+  },
+
+
+  {
+    "name": "Tektite",
+    "texture": "Assets/TektiteSheet",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.2,
+    "animations": {
+
+      "Idle": {
+        "framesindx": [ 0 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      },
+
+      "Jump": {
+        "framesindx": [ 1 ],
+        "isLooping": true,
+        "isReversed": false,
+        "isPingPong": false
+      }
+
+    }
+  },
+
+  {
+    "name": "Smoke",
+    "texture": "Assets/Smoke",
+    "frameWidth": 16,
+    "frameHeight": 16,
+    "frameDuration": 0.06,
+    "animations": {
+
+      "AttackRight": {
+        "framesindx": [ 0, 1, 2],
+        "isLooping": false,
+        "isReversed": false,
+        "isPingPong": false
+      }
+
+    }
+  }
+
+]

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace GameBase;
 public interface ICollidable
 {
-    bool IsActive { get; }
+    bool activeSelf { get; }
     //pooling.... maybe new interface? but too fragmented
     bool IsTrigger { get; }
     bool ColliderIsActive { get; }
@@ -31,5 +31,6 @@ public interface ICollidable
     void OnCollisionExit(ICollidable other);
     //each object can manage it's reaction to collisions
     Layer layer { get; }
+    GameObject owner { get; }
 }
 
